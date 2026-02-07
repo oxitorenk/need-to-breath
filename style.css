@@ -1,0 +1,331 @@
+:root {
+    /* Default to Dark Mode */
+    --ios-bg: #000000;
+    --ios-card-bg: #1C1C1E;
+    --ios-text: #FFFFFF;
+    --ios-text-secondary: #98989D;
+    --ios-separator: #38383A;
+    --ios-blue: #0A84FF;
+    --ios-red: #FF453A;
+    --ios-green: #32D74B;
+    --ios-sheet-bg: #1C1C1E;
+    --ios-sheet-handle: #5B5B5E;
+    --safe-area-top: env(safe-area-inset-top, 20px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 20px);
+}
+
+/* Light Mode Override */
+[data-theme="light"] {
+    --ios-bg: #F2F2F7;
+    --ios-card-bg: #FFFFFF;
+    --ios-text: #000000;
+    --ios-text-secondary: #8E8E93;
+    --ios-separator: #C6C6C8;
+    --ios-blue: #007AFF;
+    --ios-red: #FF3B30;
+    --ios-green: #34C759;
+    --ios-sheet-bg: #FFFFFF;
+    --ios-sheet-handle: #C5C5C7;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", sans-serif;
+}
+
+body {
+    background-color: var(--ios-bg);
+    color: var(--ios-text);
+    margin: 0;
+    padding: 0;
+    padding-bottom: calc(var(--safe-area-bottom) + 80px);
+    /* Space for bottom actions */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Typography */
+h1 {
+    margin: 0;
+}
+
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Navigation Bar */
+.ios-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ios-bg);
+    padding-top: var(--safe-area-top);
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    /* Changed back to space-between for left/right alignment */
+    align-items: center;
+    height: 44px;
+}
+
+.nav-title {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ios-text);
+}
+
+.nav-action {
+    background: none;
+    border: none;
+    color: var(--ios-blue);
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-action:active {
+    opacity: 0.5;
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+/* List Groups (Inset Grouped) */
+.content-scroll {
+    padding: 1rem;
+}
+
+.ios-list-group {
+    margin-bottom: 2rem;
+}
+
+.ios-list-header {
+    font-size: 13px;
+    color: var(--ios-text-secondary);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    /* Indent header */
+}
+
+.ios-list-footer {
+    font-size: 13px;
+    color: var(--ios-text-secondary);
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    line-height: 1.4;
+}
+
+.ios-list {
+    background-color: var(--ios-card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.ios-cell {
+    padding-left: 1rem;
+    background-color: var(--ios-card-bg);
+    transition: background-color 0.3s ease;
+}
+
+.ios-cell:not(:last-child) .cell-content {
+    border-bottom: 0.5px solid var(--ios-separator);
+}
+
+.cell-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 1rem 12px 0;
+    min-height: 44px;
+}
+
+.cell-label {
+    font-size: 17px;
+    color: var(--ios-text);
+}
+
+.cell-value {
+    font-size: 17px;
+    color: var(--ios-text-secondary);
+}
+
+.cell-value.highlight {
+    color: var(--ios-text);
+    font-weight: 500;
+}
+
+.row-apart {
+    width: 100%;
+}
+
+/* Inputs */
+.ios-input {
+    border: none;
+    background: transparent;
+    text-align: right;
+    font-size: 17px;
+    color: var(--ios-blue);
+    width: 80px;
+    outline: none;
+}
+
+/* Buttons */
+.ios-action-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.ios-btn-primary {
+    background-color: var(--ios-blue);
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.ios-btn-primary:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+.ios-btn-primary.disabled {
+    background-color: var(--ios-text-secondary);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.ios-caption {
+    margin-top: 0.5rem;
+    font-size: 13px;
+    color: var(--ios-text-secondary);
+}
+
+.ios-cell-btn {
+    width: 100%;
+    text-align: center;
+    /* Center text like iOS action sheet buttons or destructive actions */
+    background: none;
+    border: none;
+    font-size: 17px;
+    padding: 14px;
+    cursor: pointer;
+}
+
+.ios-cell-btn.text-danger {
+    color: var(--ios-red);
+}
+
+.ios-cell-btn:active {
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+/* Sheet Modal */
+.ios-sheet-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    display: flex;
+    align-items: flex-end;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    /* When hidden/opacity 0 */
+}
+
+.ios-sheet-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ios-sheet-backdrop.hidden {
+    display: none;
+}
+
+.ios-sheet {
+    background-color: var(--ios-sheet-bg);
+    width: 100%;
+    border-top-left-radius: 13px;
+    /* iOS standard is around 10-16px depending on context */
+    border-top-right-radius: 13px;
+    padding-bottom: var(--safe-area-bottom);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    /* iOS-like easing */
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.ios-sheet-backdrop.active .ios-sheet {
+    transform: translateY(0);
+}
+
+.sheet-header {
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-bottom: 0.5px solid var(--ios-separator);
+    text-align: center;
+}
+
+.sheet-drag-handle {
+    width: 36px;
+    height: 5px;
+    background-color: var(--ios-sheet-handle);
+    border-radius: 2.5px;
+    margin: 6px auto 12px auto;
+}
+
+.sheet-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 44px;
+}
+
+.sheet-title {
+    font-weight: 600;
+    font-size: 17px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--ios-text);
+}
+
+.sheet-done-btn {
+    background: none;
+    border: none;
+    color: var(--ios-blue);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: auto;
+    /* Push to right */
+}
+
+.sheet-content {
+    background-color: var(--ios-bg);
+    /* Grouped background inside sheet */
+    padding: 1.5rem 1rem;
+    overflow-y: auto;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#F2F2F7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Need To Breath</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon-192.png">
+</head>
+
+<body>
+    <div class="ios-app">
+        <!-- iOS Navigation Bar -->
+        <nav class="ios-navbar">
+            <div class="nav-content">
+                <button id="theme-btn" class="nav-action icon-btn" aria-label="Toggle Theme">
+                    <!-- Sun Icon for switching to light, or adjust based on state -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <path
+                            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    </svg>
+                </button>
+                <button id="settings-btn" class="nav-action icon-btn" aria-label="Settings">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <main class="content-scroll">
+            <div class="ios-list-group">
+                <!-- Header removed per request -->
+                <div class="ios-list">
+                    <div class="ios-cell">
+                        <div class="cell-content">
+                            <span class="cell-label">Next Cigarette In</span>
+                            <span id="countdown" class="cell-value tabular-nums">--:--</span>
+                        </div>
+                    </div>
+                    <div class="ios-cell">
+                        <div class="cell-content">
+                            <span class="cell-label">Available to Smoke</span>
+                            <span id="bank-count" class="cell-value tabular-nums highlight">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ios-action-container">
+                <button id="smoke-btn" class="ios-btn-primary">
+                    Oops, I did smoke
+                </button>
+            </div>
+        </main>
+
+        <!-- Settings Modal (Sheet) -->
+        <div id="settings-modal" class="ios-sheet-backdrop hidden">
+            <div class="ios-sheet">
+                <div class="sheet-header">
+                    <div class="sheet-drag-handle"></div>
+                    <div class="sheet-toolbar">
+                        <span class="sheet-title">Settings</span>
+                        <button id="close-settings" class="sheet-done-btn">Done</button>
+                    </div>
+                </div>
+
+                <div class="sheet-content">
+                    <div class="ios-list-group">
+                        <div class="ios-list-header">PREFERENCES</div>
+                        <div class="ios-list">
+                            <div class="ios-cell">
+                                <div class="cell-content row-apart">
+                                    <label for="interval-input" class="cell-label">Interval (Minutes)</label>
+                                    <input type="number" id="interval-input" class="ios-input" value="60" min="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ios-list-footer">
+                            Sets the time required to earn one cigarette credit.
+                        </div>
+                    </div>
+
+                    <div class="ios-list-group">
+                        <div class="ios-list">
+                            <button id="reset-btn" class="ios-cell-btn text-danger">
+                                Reset All Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js');
+            });
+        }
+    </script>
+</body>
+
+</html>
