@@ -2,7 +2,6 @@ let _state = {
     bank: 0,
     startTime: Date.now(), // When the current interval started
     intervalMinutes: 60,
-    theme: 'dark', // 'dark' or 'light'
     version: 1
 };
 
@@ -14,8 +13,7 @@ const ui = {
     settingsModal: document.getElementById('settings-modal'),
     closeSettingsBtn: document.getElementById('close-settings'),
     intervalInput: document.getElementById('interval-input'),
-    resetBtn: document.getElementById('reset-btn'),
-    themeBtn: document.getElementById('theme-btn')
+    resetBtn: document.getElementById('reset-btn')
 };
 
 function loadState() {
@@ -30,31 +28,13 @@ function loadState() {
     } else {
         saveState();
     }
-    applyTheme();
 }
 
 function saveState() {
     localStorage.setItem('ntb_state', JSON.stringify(_state));
 }
 
-function toggleTheme() {
-    _state.theme = _state.theme === 'dark' ? 'light' : 'dark';
-    saveState();
-    applyTheme();
-}
 
-function applyTheme() {
-    const isLight = _state.theme === 'light';
-    if (isLight) {
-        document.body.setAttribute('data-theme', 'light');
-        // Change icon to Moon
-        ui.themeBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
-    } else {
-        document.body.removeAttribute('data-theme');
-        // Change icon to Sun
-        ui.themeBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
-    }
-}
 
 function updateState() {
     const now = Date.now();
@@ -167,7 +147,6 @@ function init() {
     ui.smokeBtn.addEventListener('click', smoke);
     ui.settingsBtn.addEventListener('click', openSettings);
     ui.closeSettingsBtn.addEventListener('click', closeSettings);
-    ui.themeBtn.addEventListener('click', toggleTheme);
     ui.resetBtn.addEventListener('click', resetAll);
 
     // Close on backdrop click

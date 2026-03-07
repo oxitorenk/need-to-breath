@@ -14,19 +14,7 @@
     --safe-area-bottom: env(safe-area-inset-bottom, 20px);
 }
 
-/* Light Mode Override */
-[data-theme="light"] {
-    --ios-bg: #F2F2F7;
-    --ios-card-bg: #FFFFFF;
-    --ios-text: #000000;
-    --ios-text-secondary: #8E8E93;
-    --ios-separator: #C6C6C8;
-    --ios-blue: #007AFF;
-    --ios-red: #FF3B30;
-    --ios-green: #34C759;
-    --ios-sheet-bg: #FFFFFF;
-    --ios-sheet-handle: #C5C5C7;
-}
+
 
 * {
     box-sizing: border-box;
@@ -41,7 +29,6 @@ body {
     padding: 0;
     padding-bottom: calc(var(--safe-area-bottom) + 80px);
     /* Space for bottom actions */
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Typography */
@@ -65,7 +52,6 @@ h1 {
     padding-right: 1rem;
     display: flex;
     flex-direction: column;
-    transition: background-color 0.3s ease;
 }
 
 .nav-content {
@@ -130,13 +116,11 @@ h1 {
     background-color: var(--ios-card-bg);
     border-radius: 10px;
     overflow: hidden;
-    transition: background-color 0.3s ease;
 }
 
 .ios-cell {
     padding-left: 1rem;
     background-color: var(--ios-card-bg);
-    transition: background-color 0.3s ease;
 }
 
 .ios-cell:not(:last-child) .cell-content {
