@@ -63,17 +63,11 @@ function updateState() {
 
 
 function smoke() {
-    if (_state.bank > 0) {
-        _state.bank--;
-        saveState();
-        updateUI();
+    _state.bank--;
+    saveState();
+    updateUI();
 
-
-        if (navigator.vibrate) navigator.vibrate(50);
-    } else {
-        // Shake animation or visual feedback for disabled state is handled by CSS (dimmed)
-        // could add a shake class here if desired
-    }
+    if (navigator.vibrate) navigator.vibrate(50);
 }
 
 function updateInterval(newMinutes) {
@@ -105,10 +99,10 @@ function updateUI() {
     ui.bankCount.textContent = _state.bank;
     ui.intervalInput.value = _state.intervalMinutes;
 
-    if (_state.bank > 0) {
-        ui.smokeBtn.classList.remove('disabled');
+    if (_state.bank < 0) {
+        ui.bankCount.classList.add('negative');
     } else {
-        ui.smokeBtn.classList.add('disabled');
+        ui.bankCount.classList.remove('negative');
     }
 }
 

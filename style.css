@@ -150,6 +150,10 @@ h1 {
     font-weight: 500;
 }
 
+.cell-value.highlight.negative {
+    color: var(--ios-red);
+}
+
 .row-apart {
     width: 100%;
 }
